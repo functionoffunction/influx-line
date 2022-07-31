@@ -1,5 +1,5 @@
 from unittest import TestCase
-from influx_line_builder import InfluxLineBuilder
+from src.influx_line import InfluxLineBuilder
 
 
 class InfluxLineBuilderTestCase(TestCase):

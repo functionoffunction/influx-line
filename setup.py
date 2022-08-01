@@ -23,7 +23,7 @@ setup(
     long_description=long_description,
     install_requires=[],
     keywords=['python', 'influx', 'influxdb',
-              'line protocol', 'flux'],
+              'line protocol', 'flux', 'influx line protocol'],
     classifiers=[
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",

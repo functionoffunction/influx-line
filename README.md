@@ -1,6 +1,6 @@
 # influx-line
 
-Lightweight influxdata line protocol](https://docs.influxdata.com/influxdb/v2.3/write_protocols/line_protocol_tutorial/) builder
+Lightweight [influx line protocol](https://docs.influxdata.com/influxdb/v2.3/write_protocols/line_protocol_tutorial) builder
 
 ## Installation
 

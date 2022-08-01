@@ -1,0 +1,32 @@
+image: docker:19.03.5
+services:
+  - docker:19.03.5-dind
+
+stages:
+  - Build
+  - Push
+
+before_script:
+  - apk add python3
+  - pip3 install twine
+  
+
+Build:
+  stage: Build
+  before_script: []
+  script:
+    - rm -rf dist/
+    - python3 setup.py bdist_wheel sdist
+  artifacts:
+    name: dist
+    paths:
+      - dist/
+
+Push Release:
+  stage: Push
+  script:
+    - export TAG=$(echo $CI_COMMIT_TAG | sed 's/-release//')
+    - echo $TAG
+  rules:
+    - if: "$CI_COMMIT_TAG =~ /^*-release$/"
+

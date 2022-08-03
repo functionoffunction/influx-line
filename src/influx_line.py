@@ -1,4 +1,15 @@
 class InfluxLineBuilder():
+    """Influx line protocol builder.
+
+    InfluxLineBuilder allow step by step building of valid Influx line protocol.
+
+    Typical usage example:
+
+    line = InfluxLineBuilder("weather")
+    line.add_tag("location", "CA")
+    line.add_field("temperature", 82.1)
+    """
+
     # TODO: Add validation to __str__
     # TODO: Check for field, tags uniqueness
     # TODO: test out optional parts

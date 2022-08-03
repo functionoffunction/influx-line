@@ -1,11 +1,11 @@
-class InfluxLineBuilder():
+class InfluxLine():
     """Influx line protocol builder.
 
-    InfluxLineBuilder allow step by step building of valid Influx line protocol.
+    InfluxLine allow step by step building of valid Influx line protocol.
 
     Typical usage example:
 
-    line = InfluxLineBuilder("weather")
+    line = InfluxLine("weather")
     line.add_tag("location", "CA")
     line.add_field("temperature", 82.1)
     """
@@ -26,7 +26,7 @@ class InfluxLineBuilder():
     def set_measure(self, measure):
         """Sets measure name.
 
-        Set measure name for the InfluxLineBuilder object. Calling it
+        Set measure name for the InfluxLine object. Calling it
         subsequently overwrite the measure valu
 
         Args:

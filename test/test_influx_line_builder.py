@@ -1,8 +1,8 @@
 from unittest import TestCase
-from src.influx_line import InfluxLineBuilder
+from src.influx_line import InfluxLine
 
 
-class InfluxLineBuilderTestCase(TestCase):
+class InfluxLineTestCase(TestCase):
     def setUp(self):
         self.measure = "weather"
         self.sample_time_stamp = "1465839830100400200"
@@ -23,7 +23,7 @@ class InfluxLineBuilderTestCase(TestCase):
     def test_get_line_with_timestamp(self):
         """Test InfluxLine build produce right line,
          when containing timestamp """
-        line = InfluxLineBuilder("weather")
+        line = InfluxLine("weather")
         line.add_tag("location", "us-midwest")
         line.add_tag("season", "summer")
         line.add_field("temperature", 82, is_integer=True)
@@ -35,7 +35,7 @@ class InfluxLineBuilderTestCase(TestCase):
     def test_get_line_without_timestamp(self):
         """Test InfluxLine build produce right line,
          when containing not timestamp"""
-        line = InfluxLineBuilder("weather")
+        line = InfluxLine("weather")
         line.add_tag("location", "us-midwest")
         line.add_tag("season", "summer")
         line.add_field("temperature", 82, is_integer=True)
@@ -46,7 +46,7 @@ class InfluxLineBuilderTestCase(TestCase):
     def test_get_line_with_None_field(self):
         """Test InfluxLine build produce right line,
          when containing not timestamp"""
-        line = InfluxLineBuilder("weather")
+        line = InfluxLine("weather")
         line.add_tag("location", "us-midwest")
         line.add_tag("season", "summer")
         line.add_field("temperature", None, is_integer=True)

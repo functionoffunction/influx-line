@@ -11,9 +11,9 @@ pip install influx-line
 ## Usage
 
 ```python
-from flux_line import InfluxLineBuilder 
+from flux_line import InfluxLine 
 
-line = InfluxLineBuilder("weather")
+line = InfluxLine("weather")
 
 line.add_tag("location", "CA")
 line.add_tag("season", "summer")

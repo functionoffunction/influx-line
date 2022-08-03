@@ -24,6 +24,18 @@ class InfluxLineBuilder():
     _timestamp = ""
 
     def set_measure(self, measure):
+        """Sets measure name.
+
+        Set measure name for the InfluxLineBuilder object. Calling it
+        subsequently overwrite the measure valu
+
+        Args:
+        table_handle:
+            An open smalltable.Table instance.
+
+        Returns:
+        None
+        """
         self._measure = measure
 
     def set_timestamp(self, timestamp):

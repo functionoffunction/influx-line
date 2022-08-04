@@ -56,7 +56,7 @@ class InfluxLine():
     def add_tag(self, name, value):
         """add a tag to influx line.
 
-        Adds a name value value of tag for the InfluxLine object.
+        Adds a name and value of tag for the InfluxLine object.
 
         Args:
         name:
@@ -71,6 +71,20 @@ class InfluxLine():
         self._tags = self._tags + f",{name}={str(value)}"
 
     def add_field(self, name, value, is_integer: bool = False):
+        """add a field to influx line.
+
+        Adds a name and value of field for the InfluxLine object.
+
+        Args:
+        name:
+            the name of the field
+
+        value:
+            the value of the field
+
+        Returns:
+        None
+        """
         if self._fields != "":
             self._fields = f"{self._fields},"
         if value is None:

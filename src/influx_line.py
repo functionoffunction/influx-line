@@ -24,14 +24,14 @@ class InfluxLine():
     _timestamp = ""
 
     def set_measure(self, measure):
-        """Sets measure name.
+        """Sets measurement name.
 
         Set measure name for the InfluxLine object. Calling it
-        subsequently overwrite the measure valu
+        subsequently overwrite the measure value
 
         Args:
-        table_handle:
-            An open smalltable.Table instance.
+        measure:
+            the name of the measurement.
 
         Returns:
         None
@@ -39,6 +39,18 @@ class InfluxLine():
         self._measure = measure
 
     def set_timestamp(self, timestamp):
+        """Sets timestamp.
+
+        Set timestamp value for the InfluxLine object. Calling it
+        subsequently overwrite the measure value
+
+        Args:
+        timestamp:
+            the value of the measurement in nanoseconds
+
+        Returns:
+        None
+        """
         self._timestamp = timestamp
 
     def add_tag(self, name, value):

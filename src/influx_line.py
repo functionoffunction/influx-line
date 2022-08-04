@@ -10,12 +10,6 @@ class InfluxLine():
     line.add_field("temperature", 82.1)
     """
 
-    # TODO: Add validation to __str__
-    # TODO: Check for field, tags uniqueness
-    # TODO: test out optional parts
-    # TODO: add Docstrings
-    # TODO: CI/CD to pypi
-
     def __init__(self, measure):
         self._measure = measure
 

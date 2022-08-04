@@ -54,6 +54,20 @@ class InfluxLine():
         self._timestamp = timestamp
 
     def add_tag(self, name, value):
+        """add a tag to influx line.
+
+        Adds a name value value of tag for the InfluxLine object.
+
+        Args:
+        name:
+            the name of the tag
+
+        value:
+            the value of the tag
+
+        Returns:
+        None
+        """
         self._tags = self._tags + f",{name}={str(value)}"
 
     def add_field(self, name, value, is_integer: bool = False):

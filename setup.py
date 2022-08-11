@@ -8,7 +8,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
 version = os.environ.get('VERSION')
-DESCRIPTION = 'Influx line builder'
+DESCRIPTION = 'Influx line protocol builder'
 
 # Setting up
 setup(

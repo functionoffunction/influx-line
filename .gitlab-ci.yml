@@ -31,7 +31,7 @@ Push Release:
 Push Github:
   stage: Push
   script:
-    - cat <<< $private_key > ~/.ssh/id_rsa
+    - echo $private_key > ~/.ssh/id_rsa
     - git remote add github git@github.com:functionoffunction/influx-line.git
     - git push github
 

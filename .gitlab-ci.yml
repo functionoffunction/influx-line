@@ -6,15 +6,11 @@ stages:
   - Build
   - Push
 
-before_script:
-  - apk add python3
-  - pip3 install twine
-  
-
 Build:
   stage: Build
-  before_script: []
   script:
+    - apk add python3
+    - pip3 install twine
     - rm -rf dist/
     - python3 setup.py bdist_wheel sdist
   artifacts:

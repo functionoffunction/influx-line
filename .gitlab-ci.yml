@@ -36,5 +36,5 @@ Push Github:
     - echo $private_key > ~/.ssh/id_rsa
     - git remote add github git@github.com:functionoffunction/influx-line.git
     - git branch --show-current
-    - git push github main
+    - git push github HEAD:main
 

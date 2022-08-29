@@ -17,6 +17,13 @@ class InfluxLine():
     _fields = ""
     _timestamp = ""
 
+    _escape_list = [" ", ",", "=", '"']
+
+    def _escape(self, value):
+        for char in self._escape_list:
+            value = value.replace(char, f'\{char}')
+        return value
+
     def set_measure(self, measure):
         """Sets measurement name.
 
@@ -30,7 +37,7 @@ class InfluxLine():
         Returns:
         None
         """
-        self._measure = measure
+        self._measure = self._escape(measure)
 
     def set_timestamp(self, timestamp):
         """Sets timestamp.
@@ -62,7 +69,8 @@ class InfluxLine():
         Returns:
         None
         """
-        self._tags = self._tags + f",{name}={str(value)}"
+        self._tags = self._tags + \
+            f",{self._escape(name)}={self._escape(str(value))}"
 
     def add_field(self, name, value, is_integer: bool = False):
         """add a field to influx line.
@@ -93,10 +101,11 @@ class InfluxLine():
                 tag_fragment = self._create_tag_fragment(name, value)
                 self._fields = self._fields+tag_fragment
         else:
-            self._fields = self._fields+f'{name}="{value}"'
+            self._fields = self._fields + \
+                f'{self._escape(name)}="{self._escape(value)}"'
 
     def _create_tag_fragment(self, name, value):
-        tag_fragment = f"{name}={str(value)}"
+        tag_fragment = f"{self._escape(name)}={str(value)}"
         return tag_fragment
 
     def __str__(self):

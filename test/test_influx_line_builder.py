@@ -53,3 +53,14 @@ class InfluxLineTestCase(TestCase):
         line.add_field("error", None)
         line.add_field("time_zone", None)
         self.assertEqual(str(line), self.line_with_none_field)
+
+    def test_line_with_escape_chars(self):
+        """Test line with escape chars"""
+
+        line = InfluxLine("weather")
+        line.add_tag("location", "us-midwest")
+        line.add_field("temp=rature", 82)
+        line.set_timestamp(1465839830100400200)
+
+        expected = "weather,location=us-midwest temp\=rature=82 1465839830100400200"
+        self.assertEqual(str(line), expected)

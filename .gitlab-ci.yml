@@ -35,7 +35,7 @@ Push Github:
     - mkdir ~/.ssh
     - echo $private_key > ~/.ssh/id_rsa
     - echo $public_key > ~/.ssh/id_rsa.pub
-    - echo $public_key
+    - git status
     - chmod 600 ~/.ssh/id_rsa
     - git remote add github git@github.com:functionoffunction/influx-line.git
     - git branch --show-current

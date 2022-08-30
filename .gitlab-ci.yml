@@ -10,6 +10,7 @@ Build:
   stage: Build
   script:
     - apk add python3
+    - pip3 install wheel
     - rm -rf dist/
     - python3 setup.py bdist_wheel sdist
   artifacts:

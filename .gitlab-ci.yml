@@ -22,7 +22,7 @@ Build:
 Push Release:
   stage: Push
   script:
-    - pip install -U twine
+    - pip3 install -U twine
     - export TAG=$(echo $CI_COMMIT_TAG | sed 's/-release//')
     - echo $TAG
     - python setup.py sdist

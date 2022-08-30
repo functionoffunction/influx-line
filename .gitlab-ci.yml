@@ -32,12 +32,14 @@ Push Github:
   stage: Push
   script:
     - apk add git
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    - touch ~/.ssh/id_rsa
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\nStrictHostKeyChecking no\n" > ~/.ssh/config
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
     - git remote add github git@github.com:functionoffunction/influx-line.git
     - git branch --show-current
     - git push github HEAD:main
-

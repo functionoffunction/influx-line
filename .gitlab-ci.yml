@@ -32,12 +32,13 @@ Push Github:
   stage: Push
   script:
     - apk add git
-    - mkdir ~/.ssh
-    - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
     - echo $private_key > ~/.ssh/id_rsa
     - echo $public_key > ~/.ssh/id_rsa.pub
-    - git status
-    - chmod 600 ~/.ssh/id_rsa
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
     - git remote add github git@github.com:functionoffunction/influx-line.git
     - git branch --show-current
     - git push github HEAD:main

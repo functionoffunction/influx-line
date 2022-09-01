@@ -11,6 +11,8 @@ Build:
   script:
     - apk add python3
     - pip3 install wheel
+    - export TAG=$(echo $CI_COMMIT_TAG | sed 's/-release//')
+    - echo $TAG
     - rm -rf dist/
     - python3 setup.py bdist_wheel sdist
   artifacts:
@@ -25,8 +27,6 @@ Push Release:
   image: python:3.10-alpine
   script:
     - pip3 install -U twine
-    - export TAG=$(echo $CI_COMMIT_TAG | sed 's/-release//')
-    - echo $TAG
     - twine upload dist/*
   rules:
     - if: "$CI_COMMIT_TAG =~ /^*-release$/"

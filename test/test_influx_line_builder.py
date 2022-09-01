@@ -64,3 +64,14 @@ class InfluxLineTestCase(TestCase):
 
         expected = "weather,location=us-midwest temp\=rature=82 1465839830100400200"
         self.assertEqual(str(line), expected)
+
+    def test_line_with_escape_chars(self):
+        """Test line with escape space"""
+
+        line = InfluxLine("weather")
+        line.add_tag("location", "us-midwest")
+        line.add_field("lowest temp", 82)
+        line.set_timestamp(1465839830100400200)
+
+        expected = "weather,location=us-midwest lowest\ temp=82 1465839830100400200"
+        self.assertEqual(str(line), expected)

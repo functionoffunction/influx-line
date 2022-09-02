@@ -25,7 +25,7 @@ line.set_timestamp(1556813561098000000)
 
 str(line)
 """
-weather,location="CA",season="summer" temperature=82i,error=0.1,time_zone="PDT" 1556813561098000000
+weather,location=CA,season=summer temperature=82i,error=0.1,time_zone="PDT" 1556813561098000000
 """
 
 ```

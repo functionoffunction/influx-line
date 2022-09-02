@@ -11,7 +11,7 @@ pip install influx-line
 ## Usage
 
 ```python
-from flux_line import InfluxLine 
+from influx_line import InfluxLine 
 
 line = InfluxLine("weather")
 
